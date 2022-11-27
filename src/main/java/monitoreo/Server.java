@@ -13,7 +13,7 @@ public class Server {
 
         ConexionPatronSingleton.getInstance(ConexionPatronSingleton.ip,ConexionPatronSingleton.port).close();
         RegistroLog.getInstance().log("Iniciando servidor...");
-        ArcGISRuntimeEnvironment.setInstallDirectory("C://Users//Rafael//Desktop//arcgis-runtime-sdk-java-100.9.0");
+        ArcGISRuntimeEnvironment.setInstallDirectory("D://UNMSM//Ciclo2022_II//Patrones//argics//arcgis-runtime-sdk-java-100.9.0");
 
         // ArcGISRuntimeEnvironment.setInstallDirectory("C://Aplicaciones//arcgis-runtime-sdk-java-100.9.0");
         //ArcGISRuntimeEnvironment.setInstallDirectory("C://Users//Rafael//Desktop//arcgis-runtime-sdk-java-100.9.0");

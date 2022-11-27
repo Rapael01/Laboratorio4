@@ -55,7 +55,6 @@ public class Punto implements IGrafico {
         this.distancia = CoordenadasCapturadas.distanciaCoord(latIni,longIni,latitud,longitud);
           }
 
-
     public void generaPunto()   {
         simbolo = new SimpleMarkerSymbol(estilo, color, tamano);
         punto = new Graphic(new Point(longitud, latitud, SPATIAL_REFERENCE), simbolo);
@@ -144,6 +143,22 @@ public class Punto implements IGrafico {
 
     public Graphic getGrafico(){
         return getPunto();
+    }
+
+    //Borrar estos 3
+    @Override
+    public void mostrar() {
+
+    }
+
+    @Override
+    public void agregar(IGrafico grafico) {
+
+    }
+
+    @Override
+    public void eliminar(IGrafico grafico) {
+
     }
 
     public Graphic getPunto() {
