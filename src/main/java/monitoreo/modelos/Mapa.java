@@ -1,5 +1,9 @@
 package monitoreo.modelos;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
 
@@ -13,12 +17,15 @@ import com.esri.arcgisruntime.mapping.view.Callout;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import monitoreo.modelos.Pregunta4.ConexionPatronSingleton;
 import monitoreo.modelos.Pregunta4.CoordenadasCapturadas;
 import monitoreo.modelos.impl.MapaBaseProxy;
 import monitoreo.modelos.impl.Punto;
 import monitoreo.modelos.interfaces.IMapa;
+
+import javax.swing.*;
 
 public class Mapa implements IMapa {
 
@@ -41,7 +48,19 @@ public class Mapa implements IMapa {
 
         // create an ArcGISMap basemap
         MapaBaseProxy proxy = new MapaBaseProxy();
-        proxy.setTipoMapa(2);
+
+        int opc = Integer.parseInt(JOptionPane.showInputDialog(null,"-)INGRESE EL TIPO DE MAPA PARA CARGAR(1,2,3) \n-CARGAR ARGIS API GOOGLE (5)"));
+        if(opc==1||opc==2||opc==3||opc==4){
+            proxy.setTipoMapa(opc);
+        }else if(opc==5){
+            try {
+                Desktop.getDesktop().browse(new URI("http://localhost:4200/route"));
+                 System.exit(0);
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
         mapView.setMap(proxy.getMapaBase());
 
         // latitude, longitude, scale
@@ -57,6 +76,8 @@ public class Mapa implements IMapa {
                 boolean completed = viewpointSetFuture.get();
                 if (completed) {
                     registro.log("IdVentana:["+ idVentana +"] - Acercamiento completado");
+                    //ALERTA DEL PUNTO INICIAL
+                     JOptionPane.showMessageDialog(null,"COORDENADAS INICIALES "+this.coordenadaXInicial+","+this.coordenadaYInicial);
                 }
             } catch (InterruptedException e) {
                 registro.log("IdVentana:["+ idVentana +"] - Acercamiento interrumpido");
@@ -85,7 +106,10 @@ public class Mapa implements IMapa {
         CoordenadasCapturadas cc = new CoordenadasCapturadas();
 
         Callout callout = mapView.getCallout();
-        callout.setTitle("Location:");
+        callout.setTitle("         COORDENADAS REGISTRADAS:");
+        callout.setMaxSize(900,900);
+        callout.setBackgroundColor(new Color(1.0D, 1.0D, 0.0D, 1.0D));
+
         double coorX, coorY;
 
         this.coordenadaXActual = location.getX();
@@ -105,12 +129,6 @@ public class Mapa implements IMapa {
 
         String utm = CoordinateFormatter.toUtm(location, CoordinateFormatter.UtmConversionMode.LATITUDE_BAND_INDICATORS,true);
         String usng = CoordinateFormatter.toUsng(location, 4, true);
-        callout.setDetail(
-                "Decimal Degrees: " + latLonDecimalDegrees + "\n" +
-                        "Degrees, Minutes, Seconds: " + latLonDegMinSec + "\n" +
-                        "UTM: " + utm + "\n" +
-                        "USNG: " + usng + "\n"
-        );
 
         String aux_coord = formatoCoordenada(latLonDecimalDegrees);
         String arreglo[] = new String[2];
@@ -134,6 +152,16 @@ public class Mapa implements IMapa {
                         +String.valueOf(this.idVentana),coorX,coorY,this.coordenadaXInicial,this.coordenadaYInicial,xFinal, yFinal)
         );
 
+
+        callout.setDetail(
+                "LATITUD , LONGITUD :" + this.coordenadaXActual+","+this.coordenadaYActual+ "\n" +
+                "Grados Decimales: " + latLonDecimalDegrees + "\n" +
+                        "Grados, Minutos y Segundos " + latLonDegMinSec + "\n" +
+                        "UTM: " + utm + "\n" +
+                        "USNG: " + usng + "\n"
+        );
+
+
         System.out.println("PREPARANDO PARA REGISTRAR COORDENADAS");
         //cc.mostrarUltimaCoordenada();
         LinkedList<Punto> coord = new LinkedList<Punto>(CoordenadasCapturadas.coordenadasCapturadas);
@@ -155,6 +183,7 @@ public class Mapa implements IMapa {
         return (numberTransform);
     }
 
+
     public static String[] conversionCoordenada(String cadena){
 
         char arreglo[] = cadena.toCharArray();
@@ -166,6 +195,7 @@ public class Mapa implements IMapa {
                 String.valueOf(arreglo[9])+String.valueOf(arreglo[10])+String.valueOf(arreglo[11]+String.valueOf(arreglo[12]));
         return coordenadas;
     }
+
 
     public MapView getMapView() {
         return mapView;

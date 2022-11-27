@@ -10,10 +10,7 @@ public class MapaBaseProxy implements IMapaBase {
     private int tipoMapa = 0;
     private MapaBase mapaBase;
 
-    public void setTipoMapa(int tipo)  {
-
-        this.tipoMapa = tipo;
-    }
+    public void setTipoMapa(int tipo)  { this.tipoMapa = tipo; }
 
     @Override
     public ArcGISMap getMapaBase() {

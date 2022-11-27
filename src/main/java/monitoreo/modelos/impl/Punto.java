@@ -10,6 +10,8 @@ import monitoreo.modelos.Pregunta4.CoordenadasCapturadas;
 import monitoreo.modelos.interfaces.IGrafico;
 import org.bson.types.ObjectId;
 
+import javax.swing.*;
+
 public class Punto implements IGrafico {
 
     //PARA GRABAR EL TITULO DE LA VENTANA
@@ -59,6 +61,8 @@ public class Punto implements IGrafico {
     public void generaPunto()   {
         simbolo = new SimpleMarkerSymbol(estilo, color, tamano);
         punto = new Graphic(new Point(longitud, latitud, SPATIAL_REFERENCE), simbolo);
+
+
     }
 
     public int getTamano() {
@@ -146,10 +150,26 @@ public class Punto implements IGrafico {
         return getPunto();
     }
 
+    @Override
+    public void mostrar() {
+
+    }
+
+    @Override
+    public void agregar(IGrafico grafico) {
+
+    }
+
+    @Override
+    public void eliminar(IGrafico grafico) {
+
+    }
+
     public Graphic getPunto() {
         // alertas
         System.out.println("[Punto] Obteniendo Punto para agregarlo al mapa");
         return punto;
+
     }
 
     @Override
@@ -169,9 +189,10 @@ public class Punto implements IGrafico {
         dbObjectPunto.append("COORDENADA_Y",this.longitudOrigin);
         dbObjectPunto.append("LATITUD:",this.latitud);
         dbObjectPunto.append("LONGITUD",this.longitud);
-        dbObjectPunto.append("DISTANCIA",this.distancia*1000);
+        dbObjectPunto.append("DISTANCIA",Math.round(this.distancia*1000*100.0)/100.0);
         return dbObjectPunto;
     }
+
 
 
 }

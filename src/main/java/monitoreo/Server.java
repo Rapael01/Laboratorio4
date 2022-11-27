@@ -4,7 +4,6 @@ import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
 import monitoreo.modelos.Pregunta4.ConexionPatronSingleton;
 import monitoreo.modelos.RegistroLog;
 import monitoreo.modelos.Ventana;
-
 import javafx.application.Application;
 
 public class Server {
@@ -19,6 +18,9 @@ public class Server {
         //ArcGISRuntimeEnvironment.setInstallDirectory("C://Users//Rafael//Desktop//arcgis-runtime-sdk-java-100.9.0");
 
         Application.launch(Ventana.class, args);
+
+        }
+
     }
 
-}
+

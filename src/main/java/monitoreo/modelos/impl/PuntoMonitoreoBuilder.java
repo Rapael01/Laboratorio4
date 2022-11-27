@@ -13,6 +13,7 @@ public class PuntoMonitoreoBuilder implements IPuntoMonitoreo {
     private int color;
     private int tamano;
 
+
     public PuntoMonitoreoBuilder(String tipoPunto)  {
         this.tipoPunto = tipoPunto;
         this.estilo = SimpleMarkerSymbol.Style.TRIANGLE;
@@ -31,6 +32,30 @@ public class PuntoMonitoreoBuilder implements IPuntoMonitoreo {
         this.latitud = latitud;
         this.longitud = longitud;
         return this;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getTipoPunto() {
+        return tipoPunto;
+    }
+
+    public void setTipoPunto(String tipoPunto) {
+        this.tipoPunto = tipoPunto;
     }
 
     @Override

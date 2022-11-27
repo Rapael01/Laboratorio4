@@ -3,9 +3,12 @@ package monitoreo.modelos.Pregunta4;
 public class Test {
 
     public static void main(String[] args) {
+        // SMP : -11.988315, -77.101524
+        // SJL : -11.980413, -76.981046
 
         String aux = "12.0558S 077.0858W";
-     //   double value = Double.parseDouble(aux.replaceAll("[^0-9]", ""));
+
+     //double value = Double.parseDouble(aux.replaceAll("[^0-9]", ""));
         String prueba = formatoCoordenada(aux);
         System.out.println(prueba);
         String arreglo[] = new String[2];
@@ -19,7 +22,30 @@ public class Test {
         System.out.println(x);
         System.out.println(y);
 
-                                            }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static String formatoCoordenada(String coordenadaGeografica){
         String numberTransform= coordenadaGeografica.replaceAll("[^0-9]","");

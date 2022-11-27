@@ -7,4 +7,10 @@ public interface IGrafico {
     void mover(Integer x, Integer Y);
 
     Graphic getGrafico();
+    void mostrar();
+
+    void agregar(IGrafico grafico);
+
+    void eliminar(IGrafico grafico);
+
 }
