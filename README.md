@@ -17,3 +17,6 @@ Projecto Seguros / sector vehicular
  
  PREGUNTA 5 INTERFAZ DE RUTAS OPTIMAS 
  ![Image text](https://github.com/Rapael01/Laboratorio4/blob/Rafael/PREGUNTA5-INTERFAZGRAFICA.jpg)
+ 
+ RUTA CON ARGICS
+ ![Image text](https://github.com/Rapael01/Laboratorio4/blob/Rafael/RutaArgics.PNG)
