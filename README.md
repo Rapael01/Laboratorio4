@@ -8,4 +8,9 @@ Projecto Seguros / sector vehicular
     
     
 
-    
+ PREGUNTA1 
+ DIAGRAMA DEL PATRON FACADE 
+ ![Image text](https://github.com/Rapael01/Laboratorio4/blob/Rafael/ejercicio1-1.JPG)
+ 
+ DIAGRAMA DEL PATRON PROXY
+ ![Image text](https://github.com/Rapael01/Laboratorio4/blob/Rafael/ejercicio1-2.JPG)
