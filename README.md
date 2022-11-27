@@ -1,11 +1,1 @@
-Projecto Seguros / sector vehicular
-----
-
-##### Descripcion de las ramas
-
-    Rama v1.0 contiene la implementacion de las clases,
-    sin aplicar los 3 patrones a desarrollar.
-    
-    
-
-    
+https://github.com/Rapael01/Laboratorio4/blob/omar-caballero/ejercicio1-1.JPG
